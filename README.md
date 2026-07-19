@@ -230,5 +230,13 @@ gcloud run services describe stadium-iq-backend --region=us-central1
 
 ---
 
+## 👥 Owner & Contact
+- **Owner**: Shaik Fawaz
+- **GitHub**: [@SHAIKFAWAZ920](https://github.com/SHAIKFAWAZ920)
+- **Email**: shaikfawaz920@gmail.com
+- **Project Link**: [https://github.com/SHAIKFAWAZ920/StadiumIQ-AI](https://github.com/SHAIKFAWAZ920/StadiumIQ-AI)
+
+---
+
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](file:///c:/Users/shaik/Desktop/3348/INTER/PROJECTS/stadium%20IQ/LICENSE) file for details.
