@@ -24,7 +24,13 @@ app = FastAPI(
 # CORS Configuration with security settings
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, lock this down to Firebase Hosting domains
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "https://stadium-iq-ai.web.app",
+        "https://stadium-iq-ai.firebaseapp.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

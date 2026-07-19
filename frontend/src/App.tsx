@@ -9,6 +9,7 @@ import MedicalDashboard from './pages/MedicalDashboard';
 import TransportDashboard from './pages/TransportDashboard';
 import OpsDashboard from './pages/OpsDashboard';
 import RoleWrapper from './components/RoleWrapper';
+import AccessibilityWidget from './components/AccessibilityWidget';
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,9 @@ export const App: React.FC = () => {
             element={<Navigate to="/login" replace />}
           />
         </Routes>
+        
+        {/* Floating Accessibility Portal */}
+        <AccessibilityWidget />
       </BrowserRouter>
     </QueryClientProvider>
   );
