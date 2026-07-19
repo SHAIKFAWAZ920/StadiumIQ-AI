@@ -1,0 +1,39 @@
+steps:
+  # 1. Build the production backend Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/stadium-iq/backend:$COMMIT_SHA',
+      '-f', 'docker/backend.Dockerfile',
+      '.'
+    ]
+
+  # 2. Push the built image to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      'us-central1-docker.pkg.dev/$PROJECT_ID/stadium-iq/backend:$COMMIT_SHA'
+    ]
+
+  # 3. Deploy to Google Cloud Run with limits and secret manager links
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [
+      'run', 'deploy', 'stadium-iq-backend',
+      '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/stadium-iq/backend:$COMMIT_SHA',
+      '--region', 'us-central1',
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      # Environment parameters
+      '--update-env-vars', 'JWT_SECRET_KEY=stadium_iq_fifa_2026_secret_key_super_secure',
+      # Securely load Gemini API Key and Database Connection URL from Secret Manager
+      '--update-secrets', 'GEMINI_API_KEY=GEMINI_API_KEY:latest,DATABASE_URL=DATABASE_URL:latest',
+      # Autoscaling config
+      '--min-instances', '0',
+      '--max-instances', '10',
+      '--cpu', '1',
+      '--memory', '512Mi'
+    ]
+
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/stadium-iq/backend:$COMMIT_SHA'

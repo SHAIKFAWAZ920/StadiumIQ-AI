@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-fifa-dark text-white font-sans antialiased;
+    background-image: radial-gradient(circle at 50% 0%, #082142 0%, #030d1a 60%);
+    background-attachment: fixed;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: rgba(10, 25, 47, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(13, 242, 112, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(13, 242, 112, 0.08);
+}
+
+.glass-input {
+  background: rgba(10, 25, 47, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  border-color: #0df270;
+  outline: none;
+  box-shadow: 0 0 10px rgba(13, 242, 112, 0.25);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 25, 47, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 242, 112, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 242, 112, 0.7);
+}
+
+/* -----------------------------------------
+   ACCESSIBILITY MODES (BODY WRAPPERS)
+-------------------------------------------- */
+
+/* Large Text Mode */
+.accessibility-large-text {
+  font-size: 1.15rem;
+}
+.accessibility-large-text h1 {
+  font-size: 2.75rem !important;
+}
+.accessibility-large-text h2 {
+  font-size: 2.25rem !important;
+}
+.accessibility-large-text h3 {
+  font-size: 1.75rem !important;
+}
+.accessibility-large-text p, 
+.accessibility-large-text li, 
+.accessibility-large-text button, 
+.accessibility-large-text input {
+  font-size: 1.15rem !important;
+}
+
+/* Colorblind Modes using CSS Filters */
+.colorblind-protanopia {
+  filter: url('#protanopia-filter') !important;
+}
+
+.colorblind-deuteranopia {
+  filter: url('#deuteranopia-filter') !important;
+}
+
+.colorblind-tritanopia {
+  filter: url('#tritanopia-filter') !important;
+}
+
+/* High Contrast Mode */
+.accessibility-high-contrast {
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+}
+
+.accessibility-high-contrast .glass-card {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+.accessibility-high-contrast button {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+  font-weight: bold !important;
+}
+
+.accessibility-high-contrast .text-fifa-accent {
+  color: #00ff00 !important;
+}
+.accessibility-high-contrast .text-fifa-textSecondary {
+  color: #ffffff !important;
+}
+
+/* Neon glow for FIFA elements */
+.neon-glow {
+  text-shadow: 0 0 10px rgba(13, 242, 112, 0.6), 0 0 20px rgba(13, 242, 112, 0.3);
+}
+
+/* Pulse indicator */
+.pulse-green {
+  box-shadow: 0 0 0 0 rgba(13, 242, 112, 0.7);
+  animation: pulse-green-anim 1.5s infinite;
+}
+
+@keyframes pulse-green-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(13, 242, 112, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(13, 242, 112, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(13, 242, 112, 0);
+  }
+}
