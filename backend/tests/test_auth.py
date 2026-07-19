@@ -140,3 +140,40 @@ def test_get_me():
     data = response.json()
     assert data["username"] == "testuser"
     assert data["email"] == "test@test.com"
+
+# 6. Test duplicate signups
+def test_signup_duplicate_username():
+    response = client.post(
+        "/api/auth/signup",
+        json={
+            "username": "testuser",
+            "email": "different@test.com",
+            "role_name": "fan",
+            "password": "somepassword"
+        }
+    )
+    assert response.status_code == 400
+    assert "Username already registered" in response.json()["detail"]
+
+def test_signup_duplicate_email():
+    response = client.post(
+        "/api/auth/signup",
+        json={
+            "username": "differentuser",
+            "email": "test@test.com",
+            "role_name": "fan",
+            "password": "somepassword"
+        }
+    )
+    assert response.status_code == 400
+    assert "Email already registered" in response.json()["detail"]
+
+# 7. Test guest token auth bypass
+def test_guest_token_bypass():
+    headers = {"Authorization": "Bearer mock_guest_token"}
+    response = client.get("/api/auth/me", headers=headers)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["username"] == "guest_fan"
+    assert data["email"] == "guest_fan@stadiumiq.com"
+    assert data["role_name"] == "fan"

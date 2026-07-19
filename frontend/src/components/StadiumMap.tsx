@@ -222,7 +222,7 @@ export const StadiumMap: React.FC<StadiumMapProps> = ({
   // SVG Fallback Rendering block
   const renderSVGFallback = () => {
     return (
-      <svg viewBox="0 0 500 500" className="w-full h-full select-none">
+      <svg viewBox="0 0 500 500" className="w-full h-full select-none" role="img" aria-label="MetLife Stadium Map Layout">
         <defs>
           <style>{`@keyframes dash { to { stroke-dashoffset: -40; } }`}</style>
         </defs>
@@ -246,6 +246,8 @@ export const StadiumMap: React.FC<StadiumMapProps> = ({
             stroke="rgba(255,255,255,0.15)"
             strokeWidth="1"
             className="cursor-pointer transition-colors duration-200"
+            role="button"
+            aria-label={`Select ${zone} details`}
             onClick={() => onZoneSelect?.(zone)}
             onMouseEnter={() => setHoveredZone(zone)}
             onMouseLeave={() => setHoveredZone(null)}
@@ -263,6 +265,8 @@ export const StadiumMap: React.FC<StadiumMapProps> = ({
                 stroke="#0df270"
                 strokeWidth="1.5"
                 className="cursor-pointer"
+                role="button"
+                aria-label={`Select ${gate} status`}
                 onClick={() => onZoneSelect?.(gate)}
                 onMouseEnter={() => setHoveredZone(gate)}
                 onMouseLeave={() => setHoveredZone(null)}

@@ -22,7 +22,9 @@ except Exception as e:
     logging.warning(f"Firebase Admin SDK not initialized: {e}. Falling back to Local JWT Mode.")
     firebase_active = False
 
-SECRET_KEY = os.getenv("JWT_SECRET_KEY", "stadium_iq_fifa_2026_secret_key_super_secure")
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+if not SECRET_KEY:
+    SECRET_KEY = "stadium_iq_fifa_2026_secret_key_super_secure"
 ALGORITHM = "HS256"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")

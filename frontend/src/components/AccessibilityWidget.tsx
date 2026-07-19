@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Eye, ZoomIn, Volume2, VolumeX } from 'lucide-react';
+import { Settings, Eye, Volume2, VolumeX } from 'lucide-react';
 
 export const AccessibilityWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
