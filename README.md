@@ -232,6 +232,7 @@ gcloud run services describe stadium-iq-backend --region=us-central1
 
 ## 👥 Owner & Contact
 - **Owner**: Shaik Fawaz
+~ web link : https://stadium-iq-ai.web.app/
 - **GitHub**: [@SHAIKFAWAZ920](https://github.com/SHAIKFAWAZ920)
 - **Email**: shaikfawaz920@gmail.com
 - **Project Link**: [https://github.com/SHAIKFAWAZ920/StadiumIQ-AI](https://github.com/SHAIKFAWAZ920/StadiumIQ-AI)
